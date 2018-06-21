@@ -1,0 +1,15 @@
+<snippet>
+<content><![CDATA[
+/**
+ * $1
+ * @param  {[type]}        [description]
+ * @return {[type]}        [description]
+ */
+\$("#$2").click(function(${3:event}) {
+	$4
+});
+]]></content>
+<tabTrigger>click</tabTrigger>
+<description>Método que escucha el click de un ID de jQuery (Botones)</description>
+<scope>source.js, comment.block.documentation.js, punctuation.definition.comment.js</scope>
+</snippet>

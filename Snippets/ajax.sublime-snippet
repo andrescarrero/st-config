@@ -1,0 +1,47 @@
+<snippet>
+<content><![CDATA[
+/**
+ * $1
+ * @return {[type]} [description]
+ */
+var $2 = function() {
+
+    //Objeto para manejar la promesa.
+    var dfd = new \$.Deferred();
+
+    var token = \$("#token").val();
+
+    var empresa_id = \$('#empresa_id').val();
+    var deposito_id = \$('#deposito_id').val();
+
+    //Se identifica la ruta
+    var route = "$3";
+
+    \$.ajax({
+        url: route,
+        headers: { 'X-CSRF-TOKEN': token },
+        type: '${4:GET}',
+        dataType: 'json',
+        data: {
+            empresa_id: empresa_id,
+            deposito_id: deposito_id,
+        },
+        success: function(obj) {
+
+            console.log(obj);
+
+            dfd.resolve();
+        },
+        error: function(obj) {
+            //mostrar mensaje de error
+            errorMsj(obj, 'msjErrorGral', 'formErrorGral');
+        }
+    });
+
+    return dfd.promise();
+};
+]]></content>
+<tabTrigger>ajaxEvo</tabTrigger>
+<description>ajaxEvo</description>
+<scope>source.js, comment.block.documentation.js, punctuation.definition.comment.js</scope>
+</snippet>

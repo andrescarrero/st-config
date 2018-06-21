@@ -1,0 +1,20 @@
+<snippet>
+<content><![CDATA[
+try {
+
+      DB::beginTransaction();
+
+      DB::commit();
+
+      return response()->json(["message" => "$1"], 200);
+
+    } catch (\Exception \$e) {
+      DB::rollBack();
+      Log::critical("Ha ocurrido un problema al tratar de $2 ($3) {\$e->getCode()} , {\$e->getLine()} , {\$e->getMessage()}");
+      return response("Ha ocurrido un problema al tratar de $4 ($5)", 500);
+    }
+]]></content>
+<tabTrigger>begin</tabTrigger>
+<description>Try Catch, begind and commit code</description>
+<scope>embedding.php, text.html.basic, meta.embedded.block.php, source.php, meta.class.php, meta.block.php, meta.function.php, meta.block.php, keyword.control.exception.php</scope>
+</snippet>
